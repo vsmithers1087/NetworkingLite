@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WebServiceConfiguration {
+public protocol WebServiceConfiguration {
     var baseURLString: String { get }
     var endpoint: String { get }
     var method: WebRequestMethod { get }

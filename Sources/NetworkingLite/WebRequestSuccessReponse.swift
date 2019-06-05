@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WebRequestSuccessResponse {
+public struct WebRequestSuccessResponse {
     let response: URLResponse
     let data: Data
 }

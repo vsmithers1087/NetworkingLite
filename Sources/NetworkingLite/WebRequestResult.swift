@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WebRequestResult {
+public enum WebRequestResult {
     case success(WebRequestSuccessResponse)
     case error(WebRequestError)
 }

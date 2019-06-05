@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WebServiceClient: class {
-    associatedtype WebService: WebServiceConfiguration
-    func makeRequest(forWebService webService: WebService, result: @escaping (WebRequestResult) -> Void )
+public protocol WebServiceClient: class {
+    associatedtype WebServiceConfig: WebServiceConfiguration
+    func makeRequest(webServiceConfig: WebServiceConfig, result: @escaping (WebRequestResult) -> Void )
 }

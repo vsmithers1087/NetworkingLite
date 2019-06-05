@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WebRequestError {
+public struct WebRequestError {
     let statusCode: Int
     let error: Error?
 }
