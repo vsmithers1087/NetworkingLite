@@ -1,7 +1,8 @@
 import XCTest
 @testable import NetworkingLite
 
-final class NetworkingLiteResponseTests: XCTestCase {
+final class ResponseTests: XCTestCase {
+    
     private let clientMock = NetworkLiteClientMock()
     private let timeout = 8.0
     

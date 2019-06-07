@@ -10,7 +10,6 @@ import Foundation
 
 enum WebServicesMock {
     case httpBinGET
-    case httpBinStream(numberOfLines: Int)
     case httpBinBytes(bytes: Int)
     case httpBinUpload(data: Data)
     case httpBinAuthenticate(username: String, password: String)
@@ -20,6 +19,7 @@ enum WebServicesMock {
 }
 
 extension WebServicesMock: WebServiceConfiguration {
+    
     var baseURLString: String {
         "https://httpbin.org/"
     }
@@ -29,8 +29,6 @@ extension WebServicesMock: WebServiceConfiguration {
         switch self {
         case .httpBinGET:
             path = "get"
-        case .httpBinStream(let numberOfLinse):
-            path = "stream/\(numberOfLinse)"
         case .httpBinBytes(let bytes):
             path = "bytes/\(bytes)"
         case .httpBinUpload(_):
@@ -50,7 +48,6 @@ extension WebServicesMock: WebServiceConfiguration {
     var method: WebRequestMethod {
         switch self {
         case .httpBinGET,
-             .httpBinStream(_),
              .httpBinBytes(_),
              .httpBinAuthenticate(_, _),
              .httpInvalid:
@@ -71,7 +68,6 @@ extension WebServicesMock: WebServiceConfiguration {
     var httpBody: Data? {
         switch self {
         case .httpBinGET,
-             .httpBinStream(_),
              .httpBinBytes(_),
              .httpBinAuthenticate(_, _),
              .httpBinDELETE,
