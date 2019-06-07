@@ -1,6 +1,6 @@
 # NetworkingLite
 
-A networking package written with Foundation with **less than 70 lines** of code.
+A networking package written with Foundation in **less than 70 lines** of code.
 
 ## Inspiration
 
