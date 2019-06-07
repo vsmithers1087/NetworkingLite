@@ -7,5 +7,5 @@
 
 @testable import NetworkingLite
 
-typealias NetworkLiteClientMock = (NetworkingLiteClient<WebServicesMock>)
+typealias NetworkingLiteClientMock = (NetworkingLiteClient<WebServicesMock>)
 

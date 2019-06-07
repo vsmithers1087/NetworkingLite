@@ -3,7 +3,7 @@ import XCTest
 
 final class ResponseTests: XCTestCase {
     
-    private let clientMock = NetworkLiteClientMock()
+    private let clientMock = NetworkingLiteClientMock()
     private let timeout = 8.0
     
     func testResponse() {
