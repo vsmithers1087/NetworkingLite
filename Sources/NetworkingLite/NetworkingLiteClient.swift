@@ -15,6 +15,10 @@ final public class NetworkingLiteClient<WebServiceConfig: WebServiceConfiguratio
     /// - Parameter result: Type `WebRequestResult` consisting of `success` and `error`
     public func makeRequest(webServiceConfig: WebServiceConfig, result: @escaping (WebRequestResult) -> Void ) {
         let webRequest = WebRequest(endpoint: webServiceConfig.endpoint, method: webServiceConfig.method, headers: webServiceConfig.headers, httpBody: webServiceConfig.httpBody)
-        webRequest.execute(result: result)
+        webRequest.execute { (webRequestResult) in
+            DispatchQueue.main.async {
+                result(webRequestResult)
+            }
+        }
     }
 }

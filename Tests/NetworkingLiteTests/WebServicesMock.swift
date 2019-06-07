@@ -16,6 +16,7 @@ enum WebServicesMock {
     case httpBinAuthenticate(username: String, password: String)
     case httpBinDELETE
     case httpBinPUT
+    case httpInvalid
 }
 
 extension WebServicesMock: WebServiceConfiguration {
@@ -24,27 +25,35 @@ extension WebServicesMock: WebServiceConfiguration {
     }
     
     var endpoint: String {
+        let path: String
         switch self {
         case .httpBinGET:
-            return "get"
+            path = "get"
         case .httpBinStream(let numberOfLinse):
-            return "stream/\(numberOfLinse)"
+            path = "stream/\(numberOfLinse)"
         case .httpBinBytes(let bytes):
-            return "bytes/\(bytes)"
+            path = "bytes/\(bytes)"
         case .httpBinUpload(_):
-            return "post"
+            path = "post"
         case .httpBinAuthenticate(let username, let password):
-            return "basic-auth/\(username)/\(password)"
+            path = "basic-auth/\(username)/\(password)"
         case .httpBinDELETE:
-            return "delete"
+            path = "delete"
         case .httpBinPUT:
-            return "put"
+            path = "put"
+        case .httpInvalid:
+            path = "invalid"
         }
+        return baseURLString + path
     }
     
     var method: WebRequestMethod {
         switch self {
-        case .httpBinGET, .httpBinStream(_), .httpBinBytes(_), .httpBinAuthenticate(_, _):
+        case .httpBinGET,
+             .httpBinStream(_),
+             .httpBinBytes(_),
+             .httpBinAuthenticate(_, _),
+             .httpInvalid:
             return .GET
         case .httpBinUpload(_):
             return .POST
@@ -66,7 +75,8 @@ extension WebServicesMock: WebServiceConfiguration {
              .httpBinBytes(_),
              .httpBinAuthenticate(_, _),
              .httpBinDELETE,
-             .httpBinPUT:
+             .httpBinPUT,
+             .httpInvalid:
             return nil
         case .httpBinUpload(let data):
             return data

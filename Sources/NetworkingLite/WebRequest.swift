@@ -33,8 +33,8 @@ final class WebRequest {
                 return
             }
             guard 200...299 ~= response.statusCode else {
-                let error = WebRequestError(statusCode: response.statusCode, error: error)
-                result(.error(error))
+                let webRequestError = WebRequestError(statusCode: response.statusCode, error: error)
+                result(.error(webRequestError))
                 return
             }
             result(.success(WebRequestSuccessResponse(response: response, data: data)))

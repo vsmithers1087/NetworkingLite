@@ -10,3 +10,12 @@ import Foundation
 
 typealias NetworkLiteClientMock = (NetworkingLiteClient<WebServicesMock>)
 
+/*
+    - Test downloads
+    - Test WebRequestSuccessResponse
+    - Test WebRequestError
+    - Test WebRequestResult
+    - Test WebServiceClient
+ - Test Authorization
+ - Test All routes
+ */
