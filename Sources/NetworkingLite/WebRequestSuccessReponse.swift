@@ -8,6 +8,6 @@
 import Foundation
 
 public struct WebRequestSuccessResponse {
-    let response: URLResponse
-    let data: Data
+    public let response: URLResponse
+    public let data: Data
 }

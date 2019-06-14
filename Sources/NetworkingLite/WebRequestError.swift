@@ -8,6 +8,6 @@
 import Foundation
 
 public struct WebRequestError {
-    let statusCode: Int
-    let error: Error?
+    public let statusCode: Int
+    public let error: Error?
 }
